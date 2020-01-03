@@ -35,5 +35,5 @@ class STB(metaclass=ABCMeta):
         pass
 
     @abstractmethod
-    def send_command(self, command):
+    def press(self, button):
         pass

@@ -9,7 +9,10 @@ class TiVoRemote(STB):
 
     @property
     def channel(self):
-        return self.tivo.channel
+        try:
+            return int(self.tivo.channel)
+        except TypeError:
+            return None
 
     @property
     def power(self):
@@ -29,10 +32,18 @@ class TiVoRemote(STB):
     def power_off(self):
         self.tivo.power_off()
 
-    def send_command(self, command):
-        pass
+    def press(self, button):
+        self.tivo.sendIRCode(button)
 
-    # Custom commands
+    # Essential buttons
+
+    def channel_up(self):
+        self.press("CHANNELUP")
+
+    def channel_down(self):
+        self.press("CHANNELDOWN")
+    
+    # Custom views
 
     def go_home(self):
         self.tivo.sendTeleport(utils.TeleportType.TIVO)
