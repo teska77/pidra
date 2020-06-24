@@ -1,6 +1,6 @@
-from pidra.interfaces.STB import STB
-from pidra.interfaces.common import state
-from pidra.tivo import utils
+from pidra.control.interfaces.STB import STB
+from pidra.control.interfaces.common import state
+from pidra.control.tivo import utils
 
 class TiVoRemote(STB):
     def __init__(self, host, port=31339):

@@ -106,7 +106,7 @@ class TiVoConnection(object):
                         sock.send(fullCommand.encode("utf-8"))
                         time.sleep(0.1)
 
-            allData = sock.wait(1.0)
+            allData = sock.wait(0.1)
 
             if len(allData) == 0:
                 return []

@@ -1,5 +1,5 @@
 import argparse, time, json, requests
-from pidra.tivo import TiVoRemote
+from pidra.control.tivo import TiVoRemote
 
 # Get channel names from this lovely JSON mapping
 r = requests.get("http://www.bigsoft.co.uk/media/blogs/home/quick-uploads/p599/virgin_channel_guide.json")

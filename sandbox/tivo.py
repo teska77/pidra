@@ -1,2 +1,2 @@
-from pidra.tivo import TiVoRemote
-tv = TiVoRemote("192.168.1.120")
+from pidra.control.tivo import TiVoRemote
+tv = TiVoRemote("192.168.1.14")

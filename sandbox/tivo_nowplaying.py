@@ -1,10 +1,11 @@
 import requests, json, argparse, time, datetime
-
+from pidra.control.tivo import TiVoRemote
+from pidra.control.interfaces.common import *
 HOST = "web-api-pepper.horizon.tv"
 PATH = "oesp/api/GB/eng/web"
 
 parser = argparse.ArgumentParser(description="Fetches now playing information for a given channel.")
-parser.add_argument("channel", help="Channel number (e.g. 101)")
+# parser.add_argument("channel", help="Channel number (e.g. 101)")
 args = parser.parse_args()
 
 r = requests.get("https://{host}/{path}/channels".format(host=HOST, path=PATH))
@@ -14,9 +15,7 @@ channel_dict = {}
 def get_guide_for_channel(channel):
     start_time = int(time.time() - 3600) * 1000
     end_time = int(time.time() + 3600) * 1000
-    r = requests.get("https://{host}/{path}/listings?byStationId={id}&byStartTime={start_time}~{end_time}&sort=startTime".format(
-        host=HOST, path=PATH, id=channel['id'], start_time=start_time, end_time=end_time
-    ))
+    r = requests.get("https://{host}/{path}/listings?byStationId={id}&byStartTime={start_time}~{end_time}&sort=startTime".format(host=HOST, path=PATH, id=channel.get('id'), start_time=start_time, end_time=end_time))
 
     raw_epg = json.loads(r.text)['listings']
     channel['guide'] = []
@@ -66,8 +65,13 @@ for channel in raw_channel_dict:
     }
 
 # Fetch EPG data for said channel
+tv = TiVoRemote("192.168.1.14")
+if tv.power == state.OFF:
+    tv.power_on()
+print(tv.channel)
+get_guide_for_channel(channel_dict.get(str(tv.channel)))
 
-for channel in channel_dict:
-    get_guide_for_channel(channel_dict.get(channel))
+# for channel in channel_dict:
+#     get_guide_for_channel(channel_dict.get(channel))
 
 pass

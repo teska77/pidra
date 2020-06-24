@@ -1,5 +1,5 @@
 from abc import ABCMeta, abstractmethod
-from pidra.interfaces.common import state
+from pidra.control.interfaces.common import state
 
 class STB(metaclass=ABCMeta):
     def __init__(self):

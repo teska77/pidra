@@ -1,1 +1,1 @@
-from pidra.tivo.TiVoRemote import TiVoRemote
+from pidra.control.tivo.TiVoRemote import TiVoRemote
