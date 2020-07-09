@@ -127,3 +127,8 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+.vscode/settings.json
+.vscode/launch.json
+channels_with_logos.csv
+channels.xlsx
+channels.csv
