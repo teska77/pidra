@@ -1,5 +1,6 @@
 import os
 from subprocess import Popen, PIPE
+import pprint
 
 
 class CECClient:
@@ -13,8 +14,10 @@ class CECClient:
 
     def ask_for_volume(self):
         volume_output = self.send_command("tx F5:71")[0].decode()
-        volume = volume_output.split("7a:")
-        return int(volume[1], 16)
+        volume = volume_output.split("7a:")[1]
+        # Split after 7a: as that is the CEC code for audio status response, the final two hex digits are the volume.
+        # We then take the two characters after this split, as to trim out all the other logging information.
+        return int(volume[:2], 16)
 
 
 if __name__ == '__main__':

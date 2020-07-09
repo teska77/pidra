@@ -1,5 +1,6 @@
 from enum import Enum
 
+
 class state(Enum):
     ON = True
     OFF = False
