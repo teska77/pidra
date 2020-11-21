@@ -15,5 +15,5 @@ class Receiver(IRDevice):
         self.volume += 1
 
     def volume_down(self):
-        self.ir_sender.send_command(self.device_name, "KEY_VOLUMEUP")
+        self.ir_sender.send_command(self.device_name, "KEY_VOLUMEDOWN")
         self.volume -= 1

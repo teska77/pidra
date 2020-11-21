@@ -5,6 +5,6 @@ setup(
       version='0.1',
       description='Basic home automation library',
       author='Teska',
-      packages=['pidra', 'pidra.control', 'pidra.room', 'pidra.web'],
+      packages=['pidra', 'pidra.control', 'pidra.room', 'pidra.web', 'pidra.qt', 'pidra.server'],
       requires=['requests', 'Flask']
 )
