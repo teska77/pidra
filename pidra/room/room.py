@@ -1,4 +1,4 @@
-from abc import ABCMeta, abstractmethod
+from abc import ABCMeta
 
 from pidra.control.IR import IR
 from pidra.control.tivo import TiVoRemote

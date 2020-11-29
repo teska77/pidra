@@ -35,7 +35,7 @@ class Server:
 
     def parse_osc(self, message, sock):
         split_message = message.split('/')
-        device = split_message[1] # offset by 1 because of initial slash
+        device = split_message[1]  # offset by 1 because of initial slash
         property = split_message[2]
         intent = split_message[3]
         print(f"Device = '{device}', Property = '{property}, Intent = '{intent}'")
@@ -87,6 +87,7 @@ class CECThread(Thread):
                 "source": None
             })
             sleep(5)
+
 
 class SocketManager(Thread):
     def __init__(self):
